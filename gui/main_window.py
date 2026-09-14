@@ -92,6 +92,16 @@ class MainWindow(ttk.Window):
         self.nav_buttons[name].configure(bootstyle="secondary")
         self.current_page = name
 
+    def load_transactions(self, data, blockchain, address):
+        """Coordinates passing data to the Transactions page and Graph page."""
+        tx_page = self.pages.get("Transactions")
+        if tx_page:
+            tx_page.load_transactions(data, blockchain, address)
+            
+        graph_page = self.pages.get("Transaction Graph")
+        if graph_page:
+            graph_page.load_transactions(data)
+            
 def launch_gui(config):
     app = MainWindow(config)
     app.mainloop()

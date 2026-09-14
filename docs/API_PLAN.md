@@ -17,13 +17,12 @@
 - **Abstraction**: `services/ethereum_service.py`
 
 ## 3. BNB Smart Chain API Integration
-- **Primary Source**: BscScan API
-- **Expected Purpose**: Retrieve BSC wallet balances, standard transactions, and BEP-20 token transfers.
-- **Authentication**: `BSCSCAN_API_KEY` (Required).
-- **Data Retrieval**: Address histories, similar schema to Etherscan.
-- **Rate Limit Considerations**: Similar to Etherscan; ~5 calls/sec.
+- **Primary Source**: Ankr Multichain/Query API (Replaces deprecated BscScan and Moralis for Phase 4)
+- **Expected Purpose**: Retrieve BSC wallet transactions and metadata.
+- **Authentication**: `ANKR_API_KEY` (Required).
+- **Data Retrieval**: Address histories via `ankr_getTransactionsByAddress` JSON-RPC.
 - **Abstraction**: `services/bsc_service.py`
-
+- *Historical Note*: BscScan V1 API is deprecated and Etherscan V2 / Moralis free tiers restrict BSC access, making Ankr the active provider.
 ## Threat Intelligence (Reputation) Integrations
 - **Potential Sources**: AMLBot, CryptoScamDB, Chainabuse
 - **Authentication**: Handled dynamically based on which modules are activated by the user. Keys stored in `.env`.

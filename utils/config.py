@@ -7,4 +7,6 @@ def load_config():
     return {
         "APP_ENV": os.getenv("APP_ENV", "development"),
         "DATA_MODE": os.getenv("DATA_MODE", "demo"),
+        "ETHERSCAN_API_KEY": os.getenv("ETHERSCAN_API_KEY"),
+        "ANKR_API_KEY": os.getenv("ANKR_API_KEY")
     }

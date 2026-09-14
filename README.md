@@ -8,8 +8,8 @@ Cryptonexis: Blockchain OSINT & Cryptocurrency Forensic Intelligence Platform
 To provide investigators and analysts with a unified, robust, and extensible platform for cryptocurrency tracking, risk analysis, and forensic intelligence.
 
 ## Current Phase
-**Phase 3: Cryptocurrency Type Detector + Address Validation**
-*(Note: This phase validates address format only. Actual on-chain verification will occur in later API integration phases. EVM addresses may be ambiguous between Ethereum and BNB Smart Chain.)*
+**Phase 6: Transaction Visualization + Multi-Hop Tracing**
+*(Note: Cryptonexis now builds directed relation graphs from the normalized transaction records. It supports manual visualization filtering, multi-hop path tracing, shortest-path calculation, cycle handling, and interactive visual node/edge mapping via NetworkX and Matplotlib.)*
 
 ## Architecture Summary
 Cryptonexis uses a modular architecture separating the GUI from external APIs, normalization, analysis, and storage logic. The system uses local SQLite for database storage and an external `.env` file for configuration.

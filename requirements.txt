@@ -3,3 +3,4 @@ networkx
 matplotlib
 ttkbootstrap
 python-dotenv
+pytest
