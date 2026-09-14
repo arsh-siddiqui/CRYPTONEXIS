@@ -1,0 +1,44 @@
+# Development Roadmap: Cryptonexis
+
+- **Phase 0: Requirements + Architecture** 
+  - Deliverables: Documentation suite, `.env.example`, project skeleton planning.
+- **Phase 1: Development Environment** 
+  - Deliverables: Git initialization, virtualenv setup, `requirements.txt`, directory scaffolding.
+- **Phase 2: GUI Foundation** 
+  - Deliverables: Base `Tkinter` / `ttkbootstrap` application frame and navigation routing.
+- **Phase 3: Cryptocurrency Type Detector** 
+  - Deliverables: Regex validation module for BTC, ETH, BSC addresses.
+- **Phase 4: Blockchain API Integration** 
+  - Deliverables: Service clients for Blockchain.com, Etherscan V2, and BscScan.
+- **Phase 5: Transaction Normalization** 
+  - Deliverables: `transaction_parser.py` mapping raw JSON to the universal model.
+- **Phase 6: Wallet Tracker** 
+  - Deliverables: GUI and backend logic to query and display wallet balances/history.
+- **Phase 7: Transaction Engine & Tracing** 
+  - Deliverables: Depth-first/Breadth-first search multi-hop analysis logic.
+- **Phase 8: Transaction Visualization Dashboard** 
+  - Deliverables: `NetworkX` and `Matplotlib` canvas integration in GUI.
+- **Phase 9: Reputation Checker** 
+  - Deliverables: Base intelligence interface and API client hooks.
+- **Phase 10: Ransomware Intelligence** 
+  - Deliverables: Specific module to cross-reference addresses against ransomware heuristics/datasets.
+- **Phase 11: OSINT / Threat-Intel Correlation** 
+  - Deliverables: Combining multiple reputation sources into a single confidence view.
+- **Phase 12: Risk Analysis** 
+  - Deliverables: Algorithmic risk scoring based on volume, hops, and intelligence flags.
+- **Phase 13: Case Management** 
+  - Deliverables: SQLite database setup, CRUD operations for cases.
+- **Phase 14: Monitoring** 
+  - Deliverables: Background daemon/thread to poll active addresses.
+- **Phase 15: Alerts** 
+  - Deliverables: Internal notification system and GUI for triggered monitoring events.
+- **Phase 16: Report Generation** 
+  - Deliverables: Exporters for JSON, CSV, and summary PDFs.
+- **Phase 17: External Explorer Integration** 
+  - Deliverables: Clickable GUI links launching default browser to real block explorers.
+- **Phase 18: Testing** 
+  - Deliverables: Unit tests for detectors, parsers, and mock API responses.
+- **Phase 19: Security & Reliability** 
+  - Deliverables: Hardening API calls, input sanitization, error handling refinement.
+- **Phase 20: UI/UX Polish & Final Demo Prep** 
+  - Deliverables: Theming, synthetic demo data integration, final code review.

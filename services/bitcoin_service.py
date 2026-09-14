@@ -1,0 +1,3 @@
+"""
+Bitcoin service placeholder.
+"""
