@@ -243,6 +243,17 @@ class GraphPage(ttk.Frame):
             self._show_node_details(closest_node)
             return
             
+    def _check_reputation(self, address):
+        main_win = self.winfo_toplevel()
+        if hasattr(main_win, 'show_page'):
+            main_win.show_page("Reputation")
+            rep_page = main_win.pages.get("Reputation")
+            if rep_page:
+                # We assume blockchain from the graph node attribute
+                node_data = self.graph.nodes[address]
+                blockchain = node_data.get("blockchain", "Bitcoin")
+                rep_page.load_address(address, blockchain)
+
     def _show_node_details(self, node):
         if not self.graph or not self.graph.has_node(node):
             return
@@ -259,6 +270,14 @@ class GraphPage(ttk.Frame):
             info += f"\nExample Transaction:\nHash: {data.get('tx_hash', 'N/A')}\nAmount: {data.get('amount', 0)} {data.get('asset', '')}\nProvider: {data.get('provider', '')}"
             
         self._update_details(info)
+        
+        # Add a temporary button to check reputation
+        if hasattr(self, 'btn_rep'):
+            self.btn_rep.destroy()
+            
+        self.btn_rep = ttk.Button(self.text_details.master, text="Check Reputation", bootstyle=WARNING, 
+                                  command=lambda a=node: self._check_reputation(a))
+        self.btn_rep.pack(pady=10)
 
     def trace_path_ui(self):
         if not self.graph:

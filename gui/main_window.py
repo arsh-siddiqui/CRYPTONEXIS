@@ -6,6 +6,7 @@ from gui.investigation import InvestigationPage
 from gui.transactions import TransactionsPage
 from gui.graph_view import GraphPage
 from gui.reputation import ReputationPage
+from gui.risk import RiskPage
 from gui.alerts import AlertsPage
 from gui.reports import ReportsPage
 from gui.settings import SettingsPage
@@ -68,6 +69,7 @@ class MainWindow(ttk.Window):
             ("Transactions", TransactionsPage),
             ("Transaction Graph", GraphPage),
             ("Reputation", ReputationPage),
+            ("Risk Analysis", RiskPage),
             ("Alerts", AlertsPage),
             ("Reports", ReportsPage),
             ("Settings", SettingsPage)

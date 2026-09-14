@@ -1,0 +1,35 @@
+[
+    {
+        "address": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+        "blockchain": "Ethereum",
+        "finding": "Source-reported phishing association",
+        "source": "PhishIntel Demo",
+        "source_type": "phishing_intelligence",
+        "reported_date": "2025-02-15",
+        "confidence": "HIGH",
+        "reference": "https://example.com/phish/1",
+        "data_mode": "demo"
+    },
+    {
+        "address": "1CounterfeitAddressFake9999",
+        "blockchain": "Bitcoin",
+        "finding": "Reported scam address",
+        "source": "ScamReport Demo",
+        "source_type": "scam_intelligence",
+        "reported_date": "2024-11-20",
+        "confidence": "LOW",
+        "reference": "https://example.com/scam/1",
+        "data_mode": "demo"
+    },
+    {
+        "address": "0xBadAddressAgnosticNetwork",
+        "blockchain": "agnostic",
+        "finding": "Source-reported generalized fraud indicator",
+        "source": "Agnostic Intel Demo",
+        "source_type": "fraud_intelligence",
+        "reported_date": "2025-03-01",
+        "confidence": "MEDIUM",
+        "reference": "https://example.com/fraud/agnostic",
+        "data_mode": "demo"
+    }
+]
