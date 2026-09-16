@@ -8,8 +8,8 @@ Cryptonexis: Blockchain OSINT & Cryptocurrency Forensic Intelligence Platform
 To provide investigators and analysts with a unified, robust, and extensible platform for cryptocurrency tracking, risk analysis, and forensic intelligence.
 
 ## Current Phase
-**Phase 8: OSINT Correlation & Risk Analysis**
-*(Note: Cryptonexis now aggregates findings across graph metrics, reputation, and OSINT into a unified, clamped risk score (0-100) governed by v1.0 methodology. All factors are transparently documented as non-criminal investigative indicators rather than legal classifications.)*
+**Phase 9: Real-Time Wallet Monitoring & Alerts**
+*(Note: Cryptonexis now supports persistent tracking of address activity, evaluating incoming/outgoing transfers against internal baseline histories. Alerts safely run through staggered background daemons to avoid freezing the GUI or blowing through rate limits.)*
 
 ## Architecture Summary
 Cryptonexis uses a modular architecture separating the GUI from external APIs, normalization, analysis, and storage logic. The system uses local SQLite for database storage and an external `.env` file for configuration.
