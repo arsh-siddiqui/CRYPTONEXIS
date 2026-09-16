@@ -48,8 +48,13 @@ def trace_path(
                 break
                 
             resolved_path = []
-            for u, v, k in path_edges:
-                edge_data = graph.get_edge_data(u, v, key=k).copy()
+            for edge in path_edges:
+                if len(edge) >= 3:
+                    u, v, k = edge[0], edge[1], edge[2]
+                    edge_data = graph.get_edge_data(u, v, key=k).copy()
+                else:
+                    u, v = edge[0], edge[1]
+                    edge_data = graph.get_edge_data(u, v).copy()
                 edge_data["_u"] = u
                 edge_data["_v"] = v
                 resolved_path.append(edge_data)

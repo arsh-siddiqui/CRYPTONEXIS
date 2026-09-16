@@ -75,5 +75,7 @@ def initialize_database():
     finally:
         conn.close()
 
+initialize_schema = initialize_database
+
 if __name__ == "__main__":
-    initialize_schema()
+    initialize_database()
