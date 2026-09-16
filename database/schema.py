@@ -67,7 +67,90 @@ def initialize_database():
                 FOREIGN KEY(wallet_id) REFERENCES monitored_wallets(id) ON DELETE CASCADE
             )
         """)
+        # 4. Cases
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS cases (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                case_number TEXT UNIQUE NOT NULL,
+                title TEXT NOT NULL,
+                description TEXT,
+                status TEXT DEFAULT 'OPEN',
+                priority TEXT DEFAULT 'MEDIUM',
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                created_by TEXT DEFAULT 'Analyst',
+                primary_wallet TEXT,
+                primary_blockchain TEXT,
+                notes TEXT
+            )
+        """)
+
+        # 5. Case Wallets
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS case_wallets (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                case_id INTEGER NOT NULL,
+                wallet_address TEXT NOT NULL,
+                blockchain TEXT NOT NULL,
+                label TEXT,
+                role TEXT,
+                added_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(case_id, wallet_address, blockchain),
+                FOREIGN KEY(case_id) REFERENCES cases(id) ON DELETE CASCADE
+            )
+        """)
+
+        # 6. Case Transactions
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS case_transactions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                case_id INTEGER NOT NULL,
+                tx_hash TEXT NOT NULL,
+                blockchain TEXT NOT NULL,
+                relationship TEXT,
+                added_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(case_id, tx_hash, blockchain),
+                FOREIGN KEY(case_id) REFERENCES cases(id) ON DELETE CASCADE
+            )
+        """)
+
+        # 7. Case Alerts
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS case_alerts (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                case_id INTEGER NOT NULL,
+                alert_id INTEGER NOT NULL,
+                added_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(case_id, alert_id),
+                FOREIGN KEY(case_id) REFERENCES cases(id) ON DELETE CASCADE,
+                FOREIGN KEY(alert_id) REFERENCES alerts(id) ON DELETE CASCADE
+            )
+        """)
+
+        # 8. Case Evidence
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS case_evidence (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                case_id INTEGER NOT NULL,
+                evidence_type TEXT NOT NULL,
+                reference_id TEXT,
+                title TEXT,
+                description TEXT,
+                source TEXT,
+                source_type TEXT,
+                data_mode TEXT,
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                metadata TEXT,
+                FOREIGN KEY(case_id) REFERENCES cases(id) ON DELETE CASCADE
+            )
+        """)
         
+        # Indexes for fast lookup
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_case_wallets_case_id ON case_wallets(case_id)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_case_transactions_case_id ON case_transactions(case_id)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_case_alerts_case_id ON case_alerts(case_id)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_case_evidence_case_id ON case_evidence(case_id)")
+
         conn.commit()
         logger.info("Database schema initialized successfully.")
     except sqlite3.Error as e:

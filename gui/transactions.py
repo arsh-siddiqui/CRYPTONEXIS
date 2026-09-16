@@ -21,6 +21,9 @@ class TransactionsPage(ttk.Frame):
         btn_filter = ttk.Button(controls_frame, text="Filters", bootstyle=SECONDARY)
         btn_filter.pack(side=LEFT, padx=(0, 10))
         
+        btn_add_to_case = ttk.Button(controls_frame, text="Add to Case", bootstyle=INFO)
+        btn_add_to_case.pack(side=LEFT, padx=(0, 10))
+        
         lbl_chain = ttk.Label(controls_frame, text="Blockchain: N/A", font=("Helvetica", 10, "italic"))
         lbl_chain.pack(side=RIGHT, padx=10)
         
